@@ -2,7 +2,7 @@ from pandas import read_csv
 
 from python.io import read_as_dictionary, write_csv
 
-GTFS_FOLDER = "../public"
+GTFS_FOLDER = "../public/gtfs"
 
 stop_times = read_csv(GTFS_FOLDER + "/stop_times.txt", usecols=["trip_id", "stop_id", "arrival_time", "departure_time"])
 trips = read_as_dictionary(GTFS_FOLDER + "/trips.txt", lambda row: row["trip_id"])

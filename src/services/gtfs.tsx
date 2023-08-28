@@ -37,20 +37,16 @@ async function parseCsv<T>(fileLocation: string) {
     .then((data) => Papa.parse<T>(data, { header: true }).data);
 }
 
-export const getAllRoutes = cache(async () =>
-  parseCsv<RouteData>("/routes.txt")
-);
+export const getAllRoutes = cache(async () => parseCsv<RouteData>("/gtfs/routes.txt"));
 
-export const getAllStops = cache(async () => parseCsv<StopData>("/stops.txt"));
+export const getAllStops = cache(async () => parseCsv<StopData>("/gtfs/stops.txt"));
 
-export const getAllTrips = cache(async () => parseCsv<TripData>("/trips.txt"));
+export const getAllTrips = cache(async () => parseCsv<TripData>("/gtfs/trips.txt"));
 
-export const getAllStopTimes = cache(async () =>
-  parseCsv<StopTimeData>("/stop_times.txt")
-);
+export const getAllStopTimes = cache(async () => parseCsv<StopTimeData>("/gtfs/stop_times.txt"));
 
 export const getAllEdges = cache(async () => {
-  const edges = await parseCsv<WayData>("/edges.txt");
+  const edges = await parseCsv<WayData>("/gtfs/edges.txt");
   return edges.reduce((acc, current) => {
     const route = acc.get(current.route_id) ?? [];
     if (!acc.has(current.route_id)) {

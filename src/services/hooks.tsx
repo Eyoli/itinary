@@ -35,7 +35,10 @@ export const useRoutes = () => {
   const [routes, setRoutes] = useState<RouteData[]>();
 
   useEffect(() => {
-    getAllRoutes().then((data) => setRoutes(data));
+    getAllRoutes().then((data) => {
+      console.log("Found", data.length, "routes")
+      setRoutes(data)
+    });
   }, []);
 
   return routes;
@@ -45,7 +48,10 @@ export const useStops = () => {
   const [stops, setStops] = useState<StopData[]>();
 
   useEffect(() => {
-    getAllStops().then((data) => setStops(data));
+    getAllStops().then((data) => {
+      console.log("Found", data.length, "stops")
+      setStops(data)
+    });
   }, []);
 
   return stops;
