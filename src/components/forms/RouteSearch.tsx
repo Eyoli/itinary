@@ -1,30 +1,32 @@
-"use client"
+"use client";
 
 import {useState} from "react";
 import {ReactSearchAutocomplete} from "react-search-autocomplete";
-import {RouteData} from "@/src/services/gtfs";
 import {useRouter} from "next/navigation";
+import {RouteData} from "@/src/services/gtfs";
 
 type Item = {
-    id: string,
-    name: string
-}
+    id: string;
+    name: string;
+};
 
-export default function RouteSearch({routes}: { routes: RouteData[] }) {
+const RouteSearch = ({routes}: { routes: RouteData[] }) => {
+    const [routeId, setRouteId] = useState<string>();
 
-    const items = routes.map((r) => ({id: r.route_id, name: r.route_long_name}))
+    const items = routes.map((r) => ({
+        id: r.route_id,
+        name: r.route_long_name,
+    }));
 
-    const router = useRouter()
-
-    const [routeId, setRouteId] = useState<string>()
+    const router = useRouter();
 
     const handleOnSelectRoute = (result: Item) => {
-        result && setRouteId(result.id)
-    }
+        result && setRouteId(result.id);
+    };
 
     const handleOnSearch = () => {
-        routeId && router.push(`/routes/${routeId}`)
-    }
+        routeId && router.push(`/routes?id=${routeId}`);
+    };
 
     return (
         <form>
@@ -40,17 +42,21 @@ export default function RouteSearch({routes}: { routes: RouteData[] }) {
                         items={items}
                         onSelect={handleOnSelectRoute}
                         autoFocus
-                        fuseOptions={{distance: 0}}
+                        fuseOptions={{distance: 50}}
                     />
                 </div>
                 <div className="md:w-1/4">
                     <button
                         className="btn btn-primary"
-                        type="button" onClick={handleOnSearch}>
+                        type="button"
+                        onClick={handleOnSearch}
+                    >
                         Search
                     </button>
                 </div>
             </div>
         </form>
-    )
-}
+    );
+};
+
+export default RouteSearch;

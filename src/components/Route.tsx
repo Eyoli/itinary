@@ -1,11 +1,16 @@
-import {RouteData} from "@/src/services/gtfs";
-import {Card} from "@/src/components/common/Card";
+"use client";
 
-export const Route = async ({route}: { route: RouteData }) => {
-    return (
-        <Card title={route.route_long_name}>
-            <div className="badge badge-primary">{route.route_short_name}</div>
-            <div className="badge badge-secondary">{route.route_id}</div>
-        </Card>
-    )
-}
+import { Card } from "@/src/components/common/Card";
+import { RouteData } from "@/src/services/gtfs";
+
+const Route = ({ route }: { route: RouteData }) => {
+  return (
+    <Card>
+      <h2 className="card-title">{route.route_long_name}</h2>
+      <div className="badge badge-primary">{route.route_id}</div>
+      <div className="badge badge-secondary">{route.route_short_name}</div>
+    </Card>
+  );
+};
+
+export default Route;

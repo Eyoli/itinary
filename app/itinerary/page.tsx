@@ -1,18 +1,13 @@
-"use client"
+"use client";
 
-import {useSearchParams} from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
-export default async function Page() {
+export default function Page() {
+  const searchParams = useSearchParams();
+  const startStopId = searchParams?.get("from");
+  const endStopId = searchParams?.get("to");
 
-    const searchParams = useSearchParams()
-    const startStopId = searchParams?.get('from')
-    const endStopId = searchParams?.get('to')
+  if (!startStopId || !endStopId) return;
 
-    if (!startStopId || !endStopId) return
-
-    return (
-        <div className="flex flex-wrap">
-        </div>
-
-    )
+  return <div className="flex flex-wrap"></div>;
 }
