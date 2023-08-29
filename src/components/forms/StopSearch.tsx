@@ -15,7 +15,7 @@ export default function StopSearch({ stops }: { stops: StopData[] }) {
   };
 
   const handleOnSearch = () => {
-    stopId && router.push(`/stops/${stopId}`);
+    stopId && router.push(`/stops?id=${stopId}`);
   };
 
   return (
