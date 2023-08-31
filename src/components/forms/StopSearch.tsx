@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
-import { StopData } from "@/src/services/gtfs";
+import { StopData } from "@/src/services/types";
 import { useRouter } from "next/navigation";
 
 export default function StopSearch({ stops }: { stops: StopData[] }) {
