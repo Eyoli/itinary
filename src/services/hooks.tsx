@@ -5,10 +5,17 @@ import {
   getAllRoutes,
   getAllStops,
   getGraph,
+  getItinerary,
   getRoute,
   getStop,
 } from "@/src/services/gtfs";
-import { RouteData, StopData, WayData } from "@/src/services/types";
+import {
+  ItineraryNode,
+  RouteData,
+  StopData,
+  WayData,
+} from "@/src/services/types";
+import { Path } from "@/src/services/algorithms/path";
 
 export const useRoute = (routeId?: string) => {
   const [route, setRoute] = useState<RouteData>();
@@ -64,4 +71,22 @@ export const useStops = () => {
   }, []);
 
   return stops;
+};
+
+export const useItinerary = (
+  departureDate: Date,
+  startStopId?: string,
+  endStopId?: string
+) => {
+  const [itinerary, setItinerary] = useState<Path<ItineraryNode>>();
+
+  useEffect(() => {
+    startStopId &&
+      endStopId &&
+      getItinerary(startStopId, endStopId, departureDate).then((data) =>
+        setItinerary(data)
+      );
+  }, []);
+
+  return itinerary;
 };

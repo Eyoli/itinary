@@ -71,14 +71,14 @@ export class ItineraryGraph {
     });
   }
 
-  getOrThrow = (stopId: string, time: string) => {
+  getOrThrow = (stopId: string, time: Date) => {
     const stop = this.stops.get(stopId);
     if (!stop) {
       throw new Error(`Stop ${stopId} not found`);
     }
     return {
       stop,
-      time: new Date(time),
+      time,
     } as ItineraryNode;
   };
 
@@ -92,8 +92,11 @@ export class ItineraryGraph {
         // @ts-ignore
         (departure: ItineraryData) => {
           return {
-            start: getOrThrow(departure.from_stop_id, departure.start_time),
-            end: getOrThrow(departure.to_stop_id, departure.end_time),
+            start: getOrThrow(
+              departure.from_stop_id,
+              new Date(departure.start_time)
+            ),
+            end: getOrThrow(departure.to_stop_id, new Date(departure.end_time)),
             cost: new Date(departure.end_time).getTime() - from.time.getTime(),
           } as Edge<ItineraryNode>;
         }

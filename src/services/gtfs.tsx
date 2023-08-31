@@ -52,11 +52,7 @@ const getLowerBoundingCostBetween = (
     { lat: end.stop.stop_lat, lon: end.stop.stop_lon }
   ) / UPPER_BOUNDING_SPEED;
 
-export const getItinerary = async (
-  start: string,
-  end: string,
-  time: string
-) => {
+export const getItinerary = async (start: string, end: string, time: Date) => {
   const graph = await getItineraryGraph();
   return getShortestPath({
     start: graph.getOrThrow(start, time),

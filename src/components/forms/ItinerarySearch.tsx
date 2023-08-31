@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
-import { StopData } from "@/src/services/gtfs";
 import { useRouter } from "next/navigation";
+import { StopData } from "@/src/services/types";
 
 export default function ItinerarySearch({ stops }: { stops: StopData[] }) {
   const router = useRouter();

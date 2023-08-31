@@ -1,6 +1,7 @@
-import { getAllStopTimes, TripData } from "@/src/services/gtfs";
+import { getAllStopTimes } from "@/src/services/gtfs";
 import { StopTimes } from "@/src/components/StopTimes";
 import { Card } from "@/src/components/common/Card";
+import { TripData } from "@/src/services/types";
 
 export const Trip = async ({ trip }: { trip: TripData }) => {
   const data = await getAllStopTimes();

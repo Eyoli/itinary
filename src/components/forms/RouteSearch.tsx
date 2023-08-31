@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { ReactSearchAutocomplete } from "react-search-autocomplete";
 import { useRouter } from "next/navigation";
-import { RouteData } from "@/src/services/gtfs";
+import { RouteData } from "@/src/services/types";
 
 type Item = {
   id: string;

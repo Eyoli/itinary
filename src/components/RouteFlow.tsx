@@ -4,7 +4,7 @@ import Dagre from "@dagrejs/dagre";
 import { Edge, Node, ReactFlow, ReactFlowProvider } from "reactflow";
 import "reactflow/dist/style.css";
 import CustomNode from "@/src/components/CustomNode";
-import { StopData, WayData } from "@/src/services/gtfs";
+import { StopData, WayData } from "@/src/services/types";
 
 const g = new Dagre.graphlib.Graph().setDefaultEdgeLabel(() => ({}));
 

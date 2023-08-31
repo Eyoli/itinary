@@ -30,9 +30,9 @@ export const NO_PATH = {
   cost: Infinity,
 };
 
-export function getShortestPath<N, K>(
+export async function getShortestPath<N, K>(
   input: PathFinderAlgorithmInput<N, K>
-): Path<N> {
+): Promise<Path<N>> {
   const {
     end,
     start,
@@ -60,7 +60,6 @@ export function getShortestPath<N, K>(
 
   let currentNode = start;
   getNodeState(currentNode).cost = 0;
-  const candidates: N[] = [];
 
   let i = 0;
   while (
@@ -105,10 +104,14 @@ export function getShortestPath<N, K>(
     });
 
     const chosenEdge = edges.splice(nextIndex, 1);
+
+    if (chosenEdge.length === 0) {
+      return NO_PATH;
+    }
     currentNode = chosenEdge[0].end;
   }
 
-  if (currentNode && i < maxIterations) {
+  if (i < maxIterations) {
     const totalCost = getNodeState(currentNode).cost;
     const shortestPath = [];
     shortestPath.push(currentNode);

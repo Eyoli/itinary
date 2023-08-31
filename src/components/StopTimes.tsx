@@ -1,6 +1,6 @@
 "use client";
 
-import { StopTimeData } from "@/src/services/gtfs";
+import { StopTimeData } from "@/src/services/types";
 
 export const StopTimes = ({ stopTimes }: { stopTimes: StopTimeData[] }) => {
   return (

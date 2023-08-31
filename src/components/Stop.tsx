@@ -1,5 +1,5 @@
-import { StopData } from "@/src/services/gtfs";
 import { Card } from "@/src/components/common/Card";
+import { StopData } from "@/src/services/types";
 
 export const Stop = ({ stop }: { stop: StopData }) => {
   return (

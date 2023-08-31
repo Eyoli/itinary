@@ -1,7 +1,7 @@
 "use client";
 
 import { Card } from "@/src/components/common/Card";
-import { RouteData } from "@/src/services/gtfs";
+import { RouteData } from "@/src/services/types";
 
 const Route = ({ route }: { route: RouteData }) => {
   return (

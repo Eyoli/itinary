@@ -1,4 +1,4 @@
-import { RouteData } from "@/src/services/gtfs";
+import { RouteData } from "@/src/services/types";
 import { Card } from "@/src/components/common/Card";
 
 export const Route = async ({ route }: { route: RouteData }) => {

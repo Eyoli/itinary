@@ -1,6 +1,6 @@
 "use client";
 
-import { TripData } from "@/src/services/gtfs";
+import { TripData } from "@/src/services/types";
 
 export const Trips = ({ trips }: { trips: TripData[] }) => {
   return (

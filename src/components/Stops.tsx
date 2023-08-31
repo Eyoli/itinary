@@ -1,6 +1,6 @@
 "use client";
 
-import { StopData } from "@/src/services/gtfs";
+import { StopData } from "@/src/services/types";
 
 export const Stops = ({ stops }: { stops: StopData[] }) => {
   return (
